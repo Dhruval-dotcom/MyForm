@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="mx-auto col-10 col-md-8 col-lg-6 mt-3">
+		{{ form_start(articleform, {
+			attr: { class: 'form-signin' },
+		}) }}
+
+		<center><h3>Register</h3></center>
+		{{ form_row(articleform.email, {
+			attr: {placeholder: 'Email'},
+		}) }}
+		{{ form_row(articleform.plainPassword, {
+			attr: {placeholder: 'Password'},
+		}) }}
+		{{ form_row(articleform.agreeTerms) }}
+		<button type="submit" class="btn btn-primary">Submit</button>
+		{{ form_end(articleform) }}
+	</div>
+{% endblock %}

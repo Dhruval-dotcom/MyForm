@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">User name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Password </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for val in article %}
+				<tr>
+					<th scope="row">
+						{{ val.id }}
+					</th>
+					<td>
+						{{ val.name }}
+					</td>
+					<td>
+						{{ val.email }}
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

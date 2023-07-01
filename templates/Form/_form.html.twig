@@ -1,0 +1,33 @@
+{{ form_start(articleform) }}
+
+{{ form_row(articleform.title,{
+	label: 'Article Title'
+}) }}
+
+{{ articleform.title.vars.id }}
+
+{{ form_row(articleform.content) }}
+
+{% if articleform.createdAt is defined %}
+	{{ form_row(articleform.createdAt) }}
+{% endif %}
+
+{{ form_row(articleform.email) }}
+
+{{ form_row(articleform.Location, {
+	attr: {
+	'data-specific-location-url': path('locationSelect'),
+	class: 'js-article-form-location'
+	}
+}) }}
+<div class="js-specific-location-target">
+	{% if articleform.specificLocationName is defined %}
+		{{ form_row(articleform.specificLocationName) }}
+	{% endif %}
+</div>
+{# {{ form_widget(articleform.email) }} #}
+
+<button type="submit" class="btn btn-primary">{{button_text}}</button>
+{{ form_end(articleform) }}
+
+{# {{form(articleform)}} #}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block extrajs %}
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="{{ asset('js/article_form.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+	<div class="mx-auto col-10 col-md-8 col-lg-6 mt-3">
+		{{ include ('Form/_form.html.twig', {
+			button_text: 'create'
+		})  }}
+		{{ app.session.flashbag.peek('success')|length > 0 ? 'Msg received' : 'No msg' }}
+	</div>
+{% endblock %}

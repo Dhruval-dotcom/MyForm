@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% if app.session.flashbag.peek('success')|length > 0 %}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				{{ message }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endfor %}
+	{% endif %}
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Title</th>
+				<th scope="col">Content</th>
+				<th scope="col">Created At</th>
+				<th scope="col">Location</th>
+				<th scope="col">Specified</th>
+				<th scope="col">Email</th>
+				<th scope="col">Actions</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for val in article %}
+				<tr>
+					<th scope="row">
+						{{ val.id }}
+					</th>
+					<td>
+						{{ val.title }}
+					</td>
+					<td>
+						{{ val.content }}
+					</td>
+					<td>
+						{{ val.createdAt | date }}
+					</td>
+					<td> 
+						{{ val.Location }} 
+					</td>
+					<td> 
+						{{ val.specificLocationName }} 
+					</td>
+					<td> 
+						{{ val.email }} 
+					</td>
+					<td>
+						<a href="{{path('edit_form', {id: val.id})}}">
+							<i class="fa fa-edit"></i>
+						</a>&nbsp;&nbsp;&nbsp;
+						<a href="{{path('delete', {id: val.id})}}">
+							<i class="fa fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
